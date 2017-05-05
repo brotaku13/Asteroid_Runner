@@ -14,4 +14,7 @@ public abstract class GameObjects {
 
 
     public abstract void draw(Graphics g);
+    public abstract void update();
+
+
 }

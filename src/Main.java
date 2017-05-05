@@ -18,16 +18,17 @@ public class Main {
 
         gameFrame.setBounds(10, 10, WIDTH, HEIGHT);
         gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
-        gameFrame.setBackground(Color.DARK_GRAY);
+        gameFrame.setBackground(Color.BLACK);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
 
         mainframe.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        mainframe.setBackground(Color.DARK_GRAY);
+        mainframe.setBackground(Color.BLACK);
         mainframe.setVisible(true);
 
 
         gameFrame.add(mainframe);
+
         gameFrame.pack();
 
     }

@@ -3,13 +3,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  * Created by brian on 5/3/2017.
  */
 public class MainFrame extends JPanel implements ActionListener {
     Player player;
+    ArrayList<EnemyObjects> enemyObjectList;
 
+    CollisionDetection collisionDetection = new CollisionDetection();
     InputMap inputmap;
     ActionMap actionmap;
 
@@ -19,6 +22,9 @@ public class MainFrame extends JPanel implements ActionListener {
         player = new Player();
         inputmap = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         actionmap = this.getActionMap();
+        enemyObjectList = new ArrayList<>();
+
+
 
         // mapping up
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "UP");
@@ -45,7 +51,7 @@ public class MainFrame extends JPanel implements ActionListener {
         actionmap.put("LEFT_RELEASED", new KeyBindings(player, "LEFT_RELEASED"));
 
 
-        t = new Timer(1, this);
+        t = new Timer(10, this);
         t.start();
 
     }
@@ -54,13 +60,22 @@ public class MainFrame extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        for (GameObjects obj : enemyObjectList){
+            obj.draw(g);
+        }
         player.draw(g);
+        //medAss.draw(g);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        for (GameObjects obj : enemyObjectList){
+            obj.update();
+        }
         player.update();
+        collisionDetection.DetectCollision(enemyObjectList, player);
+        //medAss.update();
         repaint();
     }
 }
