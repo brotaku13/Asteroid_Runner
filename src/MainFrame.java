@@ -39,7 +39,7 @@ public class MainFrame extends JPanel implements ActionListener {
         actionmap = this.getActionMap();
         enemyObjectList = new ArrayList<>();
         laserArray = new ArrayList<>();
-        laserFactory = new LaserFactory(laserArray, player);
+
 
 
 
@@ -57,15 +57,20 @@ public class MainFrame extends JPanel implements ActionListener {
     }
 
     public void gameManager(){
-        LaserFactory laserFactory = new LaserFactory(laserArray, player);
+        laserFactory = new LaserFactory(laserArray, player);
 
-        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(500));
+
+        /*
+        this method controls how often the asteroids are created
+        change the bound to change the creation of asteroids: higher equals slower
+         */
+        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(1000 - 500) + 500);
 
         //mapping SpaceBar
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "SPACE");
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true), "SPACE_RELEASED");
         actionmap.put("SPACE", new KeyBindings(laserFactory, "SPACE"));
-        actionmap.put("SPACE", new KeyBindings(laserFactory, "SPACE_RELEASED"));
+        actionmap.put("SPACE_RELEASED", new KeyBindings(laserFactory, "SPACE_RELEASED"));
 
         // mapping up
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "UP");
@@ -97,14 +102,19 @@ public class MainFrame extends JPanel implements ActionListener {
 
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        for (GameObjects obj : enemyObjectList){
-            obj.draw(g);
+        try {
+            super.paintComponent(g);
+            for (GameObjects obj : enemyObjectList){
+                obj.draw(g);
+            }
+            for (LaserShot laser : laserArray){
+                laser.draw(g);
+            }
+            player.draw(g);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-        for (LaserShot laser : laserArray){
-            laser.draw(g);
-        }
-        player.draw(g);
+
 
     }
 
@@ -112,18 +122,20 @@ public class MainFrame extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
+
             for (GameObjects obj : enemyObjectList){
                 obj.update();
             }
-            laserFactory.update();
 
             for (LaserShot laser : laserArray){
                 laser.update();
             }
 
+            laserFactory.update();
+
             player.update();
 
-            collisionDetection.DetectCollision(enemyObjectList, player);
+            collisionDetection.DetectCollision(enemyObjectList, laserArray, player);
 
             repaint();
         } catch (Exception ex){

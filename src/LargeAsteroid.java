@@ -11,7 +11,7 @@ public class LargeAsteroid extends Asteroid{
 
     public LargeAsteroid(int height) {
 
-        super(5);
+        super(2);
         life = 50;
         setX(Main.WIDTH);
         setY(height);

@@ -52,7 +52,11 @@ public class KeyBindings extends AbstractAction {
                 laserFactory.setFiring(true);
                 break;
             case ("SPACE_RELEASED"):
-                laserFactory.setFiring(true);
+                laserFactory.setFiring(false);
+
+                //resets the firing execution so that the player can begin firing right away after letting go of space and
+                // pressing it down again
+                laserFactory.setLastFire(1000);
                 break;
             default:
                 break;

@@ -12,7 +12,7 @@ public class MediumAsteroid extends Asteroid{
 
     public MediumAsteroid(int height) {
 
-        super(8);
+        super(5);
         life = 20;
         setX(Main.WIDTH);
         setY(height);

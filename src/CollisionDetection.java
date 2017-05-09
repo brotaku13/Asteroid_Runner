@@ -11,7 +11,7 @@ public class CollisionDetection {
 
     }
 
-    public void DetectCollision(ArrayList<EnemyObjects> enemyObjectList, Player player){
+    public void DetectCollision(ArrayList<EnemyObjects> enemyObjectList, ArrayList<LaserShot> laserArray,  Player player){
         for (int i = 0; i < enemyObjectList.size(); i++){
             if(enemyObjectList.get(i).EnemyRectangle().intersects(player.shipRectangle())){
                 enemyObjectList.remove(i);
