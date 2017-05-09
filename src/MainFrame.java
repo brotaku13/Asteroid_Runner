@@ -4,27 +4,68 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Timer;
 
-/**
- * Created by brian on 5/3/2017.
- */
 public class MainFrame extends JPanel implements ActionListener {
     Player player;
+    LaserFactory laserFactory;
+    //List of enemy objects, all enemy objects inherit from EnemyObject and are contined in this list, which is drawn at every Timer Action
     ArrayList<EnemyObjects> enemyObjectList;
+    ArrayList<LaserShot> laserArray;
 
+
+
+    //collision detection object
     CollisionDetection collisionDetection = new CollisionDetection();
+
+    //input mapping objects
     InputMap inputmap;
     ActionMap actionmap;
 
-    Timer t;
+    //Util Timer: runs enemy Object Creation
+    Timer timer;
+
+    //Swing Timer: runs animation
+    javax.swing.Timer swingTimer;
+
+
+    Random rand = new Random();
+
 
     public MainFrame (){
         player = new Player();
         inputmap = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         actionmap = this.getActionMap();
         enemyObjectList = new ArrayList<>();
+        laserArray = new ArrayList<>();
+        laserFactory = new LaserFactory(laserArray, player);
 
 
+
+
+
+
+        //instantiating Swing Timer. This is the timer that runs the animation and repainting
+        swingTimer = new javax.swing.Timer(4, this);
+        swingTimer.start();
+
+        //instantiating the util Timer, this runs the gameManager and adds asteroid to the objectList
+        timer = new Timer();
+
+
+    }
+
+    public void gameManager(){
+        LaserFactory laserFactory = new LaserFactory(laserArray, player);
+
+        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(500));
+
+        //mapping SpaceBar
+        inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "SPACE");
+        inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true), "SPACE_RELEASED");
+        actionmap.put("SPACE", new KeyBindings(laserFactory, "SPACE"));
+        actionmap.put("SPACE", new KeyBindings(laserFactory, "SPACE_RELEASED"));
 
         // mapping up
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "UP");
@@ -51,9 +92,6 @@ public class MainFrame extends JPanel implements ActionListener {
         actionmap.put("LEFT_RELEASED", new KeyBindings(player, "LEFT_RELEASED"));
 
 
-        t = new Timer(10, this);
-        t.start();
-
     }
 
 
@@ -63,19 +101,34 @@ public class MainFrame extends JPanel implements ActionListener {
         for (GameObjects obj : enemyObjectList){
             obj.draw(g);
         }
+        for (LaserShot laser : laserArray){
+            laser.draw(g);
+        }
         player.draw(g);
-        //medAss.draw(g);
+
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (GameObjects obj : enemyObjectList){
-            obj.update();
+        try {
+            for (GameObjects obj : enemyObjectList){
+                obj.update();
+            }
+            laserFactory.update();
+
+            for (LaserShot laser : laserArray){
+                laser.update();
+            }
+
+            player.update();
+
+            collisionDetection.DetectCollision(enemyObjectList, player);
+
+            repaint();
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
-        player.update();
-        collisionDetection.DetectCollision(enemyObjectList, player);
-        //medAss.update();
-        repaint();
+
     }
 }

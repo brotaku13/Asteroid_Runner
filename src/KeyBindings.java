@@ -7,10 +7,17 @@ import java.awt.event.ActionEvent;
 public class KeyBindings extends AbstractAction {
     String cmd;
     Player player;
+    LaserFactory laserFactory;
 
     public KeyBindings (Player player, String cmd){
         this.cmd = cmd;
         this.player = player;
+
+    }
+
+    public KeyBindings (LaserFactory laserFactory, String cmd){
+        this.laserFactory = laserFactory;
+        this.cmd = cmd;
     }
 
     @Override
@@ -40,11 +47,14 @@ public class KeyBindings extends AbstractAction {
             case ("LEFT_RELEASED"):
                 player.setLEFT(false);
                 break;
+            case ("SPACE"):
+                //laserFactory.createLaser();
+                laserFactory.setFiring(true);
+                break;
+            case ("SPACE_RELEASED"):
+                laserFactory.setFiring(true);
+                break;
             default:
-                player.setRIGHT(false);
-                player.setLEFT(false);
-                player.setDOWN(false);
-                player.setUP(false);
                 break;
 
         }

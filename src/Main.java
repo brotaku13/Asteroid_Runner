@@ -31,5 +31,7 @@ public class Main {
 
         gameFrame.pack();
 
+        mainframe.gameManager();
+
     }
 }

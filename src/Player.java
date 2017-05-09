@@ -28,13 +28,7 @@ public class Player extends GameObjects {
 
     @Override
     public void draw(Graphics g) {
-        /*
-        g.setColor(Color.WHITE);
-        int[] shipXarr = {this.getX() + shipLength, this.getX() - (shipLength / 4), this.getX(), this.getX() - (shipLength / 4)};
-        int[] shipYarr = {this.getY(), this.getY() - (shipLength / 2), this.getY(), this.getY() + (shipLength / 2)};
-        int shipNumPts = 4;
-        g.fillPolygon(shipXarr, shipYarr, shipNumPts);
-         */
+
         g.setColor(Color.WHITE);
         g.fillRect(getX(), getY(), shipSize, shipSize);
 
@@ -91,6 +85,7 @@ public class Player extends GameObjects {
     public void setDOWN(boolean newDown) {down = newDown;}
     public void setRIGHT(boolean newRight) {right = newRight;}
     public void setLEFT(boolean newLeft) {left = newLeft;}
+
     public int getShipLength() { return shipSize; }
     public void setShipLength( int newShipLength) { this.shipSize = newShipLength; }
 

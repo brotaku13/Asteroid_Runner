@@ -4,20 +4,19 @@ import java.util.Random;
 import java.awt.*;
 import java.awt.geom.Area;
 
-/**
- * Created by brian on 5/4/2017.
- */
-public class MediumAsteroid extends Asteroid{
+
+public class LargeAsteroid extends Asteroid{
+
     Random rand = new Random();
 
-    public MediumAsteroid(int height) {
+    public LargeAsteroid(int height) {
 
-        super(8);
-        life = 20;
+        super(5);
+        life = 50;
         setX(Main.WIDTH);
         setY(height);
-        setLength(rand.nextInt(50) + 20);
-        setWidth(rand.nextInt(50) + 20);
+        setLength(rand.nextInt(120) + 50);
+        setWidth(rand.nextInt(120) + 50);
     }
 
     @Override
