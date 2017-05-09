@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Timer;
 
@@ -40,12 +41,6 @@ public class MainFrame extends JPanel implements ActionListener {
         enemyObjectList = new ArrayList<>();
         laserArray = new ArrayList<>();
 
-
-
-
-
-
-
         //instantiating Swing Timer. This is the timer that runs the animation and repainting
         swingTimer = new javax.swing.Timer(4, this);
         swingTimer.start();
@@ -58,7 +53,6 @@ public class MainFrame extends JPanel implements ActionListener {
 
     public void gameManager(){
         laserFactory = new LaserFactory(laserArray, player);
-
 
         /*
         this method controls how often the asteroids are created
@@ -112,7 +106,7 @@ public class MainFrame extends JPanel implements ActionListener {
             }
             player.draw(g);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("except 1 " + ex.getMessage());
         }
 
 
@@ -126,12 +120,11 @@ public class MainFrame extends JPanel implements ActionListener {
             for (GameObjects obj : enemyObjectList){
                 obj.update();
             }
-
             for (LaserShot laser : laserArray){
                 laser.update();
             }
-
-            laserFactory.update();
+            if (!(laserFactory == null))
+                laserFactory.update();
 
             player.update();
 
@@ -139,7 +132,8 @@ public class MainFrame extends JPanel implements ActionListener {
 
             repaint();
         } catch (Exception ex){
-            System.out.println(ex.getMessage());
+            //System.out.println("except 2 " + ex.getMessage());
+            ex.printStackTrace();
         }
 
     }

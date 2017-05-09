@@ -8,11 +8,12 @@ import java.awt.geom.Area;
 public class LargeAsteroid extends Asteroid{
 
     Random rand = new Random();
+    private Rectangle boundingRect = new Rectangle(getX(), getY(), getWidth(), getLength());
 
     public LargeAsteroid(int height) {
 
-        super(2);
-        life = 50;
+        super(2, 10);
+
         setX(Main.WIDTH);
         setY(height);
         setLength(rand.nextInt(120) + 50);
@@ -27,7 +28,8 @@ public class LargeAsteroid extends Asteroid{
 
     @Override
     public Rectangle EnemyRectangle() {
-        return new Rectangle(getX(), getY(), getWidth(), getLength());
+        return boundingRect;
+
     }
 
 
@@ -35,6 +37,7 @@ public class LargeAsteroid extends Asteroid{
     @Override
     public void update() {
         move();
+        boundingRect.setRect(getX(), getY(), getWidth(), getLength());
 
     }
 

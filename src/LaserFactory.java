@@ -1,7 +1,6 @@
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 
 /**
@@ -25,7 +24,6 @@ public class LaserFactory {
     public void createLaser() {
 
         if (firing) {
-            System.out.println("creating laser");
             laserShotArrayList.add(new LaserShot(7, 1, 14, 4, player.getX() + player.getShipLength(), player.getY() + player.getShipLength() / 2));
         }
 
@@ -34,7 +32,6 @@ public class LaserFactory {
 
     public void update() {
         if((System.currentTimeMillis() - lastFire) >= player.getFireRate()) {
-            // Code to move apple goes here.
             createLaser();
             lastFire = System.currentTimeMillis();
         }

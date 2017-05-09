@@ -8,10 +8,12 @@ public abstract class EnemyObjects extends GameObjects {
     private int velocity;
     protected int length;
     protected int width;
+    protected int life;
 
 
-    public EnemyObjects(int newVelocity){
+    public EnemyObjects(int newVelocity, int newLife){
         velocity = newVelocity;
+        life = newLife;
     }
 
 

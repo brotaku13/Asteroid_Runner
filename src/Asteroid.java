@@ -3,10 +3,11 @@ import java.awt.geom.Area;
 
 
 public abstract class Asteroid extends EnemyObjects {
-    protected int life;
 
-    public Asteroid (int newVelocity){
-        super(newVelocity);
+
+    public Asteroid (int newVelocity, int newLife){
+        super(newVelocity, newLife);
+
     }
 
     @Override
