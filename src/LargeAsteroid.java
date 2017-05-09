@@ -1,9 +1,7 @@
-import javafx.scene.shape.Ellipse;
+
 import java.util.Random;
 
 import java.awt.*;
-import java.awt.geom.Area;
-
 
 public class LargeAsteroid extends Asteroid{
 
@@ -14,7 +12,7 @@ public class LargeAsteroid extends Asteroid{
 
         super(2, 10);
 
-        setX(Main.WIDTH);
+        setX(Main.GAME_WIDTH);
         setY(height);
         setLength(rand.nextInt(120) + 50);
         setWidth(rand.nextInt(120) + 50);

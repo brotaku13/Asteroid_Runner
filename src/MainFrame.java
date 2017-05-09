@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Timer;
 
@@ -58,7 +57,7 @@ public class MainFrame extends JPanel implements ActionListener {
         this method controls how often the asteroids are created
         change the bound to change the creation of asteroids: higher equals slower
          */
-        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(1000 - 500) + 500);
+        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(1000 - 100) + 100);
 
         //mapping SpaceBar
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "SPACE");

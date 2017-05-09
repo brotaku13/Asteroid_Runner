@@ -1,12 +1,6 @@
-import javafx.scene.shape.Ellipse;
 
 import java.awt.*;
-import java.awt.geom.Area;
 
-
-/**
- * Created by brian on 5/3/2017.
- */
 public class Player extends GameObjects {
 
     private int speed;
@@ -15,8 +9,8 @@ public class Player extends GameObjects {
     private boolean up, down, left, right;
 
     public Player (){
-        setX(Main.HEIGHT / 2);
-        setY(Main.WIDTH / 3);
+        setX(Main.GAME_WIDTH / 2);
+        setY(Main.GAME_HEIGHT / 2);
         speed = 5;
     }
 
@@ -54,20 +48,20 @@ public class Player extends GameObjects {
         /*
         controls moving down, and bounds it to more than height = main.HEIGHT
          */
-        if (getY() + shipSize <= Main.HEIGHT) {
+        if (getY() + shipSize <= Main.GAME_HEIGHT) {
             if (down) {
                 setY(this.getY() + speed);
             }
-        } else {setY(Main.HEIGHT - shipSize);}
+        } else {setY(Main.GAME_HEIGHT - shipSize);}
 
         /*
         controls moving right, and bounds it to more than length = main.WIDTH
          */
-        if (getX() <= Main.WIDTH - 100) {
+        if (getX() <= Main.GAME_WIDTH - 100) {
             if (right) {
                 setX(this.getX() + speed);
             }
-        } else {setX(Main.WIDTH - 100);}
+        } else {setX(Main.GAME_WIDTH - 100);}
 
         /*
         controls moving left, and bounds it to more than length = 0

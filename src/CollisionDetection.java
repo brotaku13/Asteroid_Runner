@@ -1,10 +1,6 @@
-import java.awt.*;
-import java.awt.geom.Area;
+
 import java.util.ArrayList;
 
-/**
- * Created by brian on 5/4/2017.
- */
 public class CollisionDetection {
 
     public CollisionDetection (){
@@ -33,7 +29,7 @@ public class CollisionDetection {
         }
         if (!laserArray.isEmpty()){
             for (int i = 0; i < laserArray.size(); i++){
-                if (laserArray.get(i).getX() > Main.WIDTH){
+                if (laserArray.get(i).getX() > Main.GAME_WIDTH){
                     laserArray.remove(i);
 
                 }

@@ -21,9 +21,9 @@ public class AsteroidFactory extends TimerTask {
         int creationProbability = rand.nextInt(10);
 
         if (creationProbability < 5)
-            enemyObjects.add(new MediumAsteroid(rand.nextInt(Main.HEIGHT)));
+            enemyObjects.add(new MediumAsteroid(rand.nextInt(Main.GAME_HEIGHT)));
         else if (creationProbability <= 10 && creationProbability >= 5)
-            enemyObjects.add(new LargeAsteroid(rand.nextInt(Main.HEIGHT)));
+            enemyObjects.add(new LargeAsteroid(rand.nextInt(Main.GAME_HEIGHT)));
 
     }
 }
