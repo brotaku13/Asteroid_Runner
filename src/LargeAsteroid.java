@@ -7,6 +7,7 @@ public class LargeAsteroid extends Asteroid{
 
     Random rand = new Random();
     private Rectangle boundingRect = new Rectangle(getX(), getY(), getWidth(), getLength());
+    private Color color = new Color(118, 135, 131);
 
     public LargeAsteroid(int height) {
 
@@ -25,6 +26,7 @@ public class LargeAsteroid extends Asteroid{
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        g.setColor(color);
         g.fillRect(getX(), getY(), getWidth(), getLength());
     }
 

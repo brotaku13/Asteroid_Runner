@@ -6,7 +6,7 @@ import java.awt.*;
  */
 public class Main {
     public static final int WINDOW_HEIGHT = 920;
-    public static final int WINDOW_WIDTH = 1400;
+    public static int WINDOW_WIDTH = 1400;
 
 
     public static final int GAME_HEIGHT = 780;
@@ -16,7 +16,7 @@ public class Main {
 
     public static int playerLife = 3;
     public static int points = 0;
-
+    public static int laserLevel = 0;
 
 
 

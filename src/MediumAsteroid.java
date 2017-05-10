@@ -6,7 +6,7 @@ import java.awt.*;
 public class MediumAsteroid extends Asteroid{
     Random rand = new Random();
     private Rectangle boundingRect = new Rectangle(getX(), getY(), getWidth(), getLength());
-
+    private Color color = new Color(234, 255, 251);
 
     public MediumAsteroid(int height) {
 
@@ -22,6 +22,7 @@ public class MediumAsteroid extends Asteroid{
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        g.setColor(color);
         g.fillRect(getX(), getY(), getWidth(), getLength());
     }
 

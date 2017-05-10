@@ -20,7 +20,7 @@ public class LaserShot extends GameObjects{
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.CYAN);
         g.fillRect(getX(), getY(), length, height);
     }
 

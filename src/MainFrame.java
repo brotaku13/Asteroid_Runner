@@ -14,6 +14,7 @@ public class MainFrame extends JPanel implements ActionListener {
     //List of enemy objects, all enemy objects inherit from EnemyObject and are contined in this list, which is drawn at every Timer Action
     ArrayList<EnemyObjects> enemyObjectList;
     ArrayList<LaserShot> laserArray;
+    ArrayList<Powerup> powerupArray;
 
 
 
@@ -40,6 +41,7 @@ public class MainFrame extends JPanel implements ActionListener {
         actionmap = this.getActionMap();
         enemyObjectList = new ArrayList<>();
         laserArray = new ArrayList<>();
+        powerupArray = new ArrayList<>();
 
         //instantiating Swing Timer. This is the timer that runs the animation and repainting
         swingTimer = new javax.swing.Timer(4, this);
@@ -58,7 +60,7 @@ public class MainFrame extends JPanel implements ActionListener {
         this method controls how often the asteroids are created
         change the bound to change the creation of asteroids: higher equals slower
          */
-        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(500 - 200) + 200);
+        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(600 - 100) + 100);
 
         //mapping SpaceBar
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "SPACE");
@@ -110,6 +112,9 @@ public class MainFrame extends JPanel implements ActionListener {
             for (LaserShot laser : laserArray){
                 laser.draw(g);
             }
+            for (Powerup powerup : powerupArray){
+                powerup.draw(g);
+            }
             player.draw(g);
         } catch (Exception ex) {
             System.out.println("except 1 " + ex.getMessage());
@@ -129,12 +134,15 @@ public class MainFrame extends JPanel implements ActionListener {
             for (LaserShot laser : laserArray){
                 laser.update();
             }
+            for (Powerup powerup : powerupArray){
+                powerup.update();
+            }
             if (!(laserFactory == null))
                 laserFactory.update();
 
             player.update();
 
-            collisionDetection.DetectCollision(enemyObjectList, laserArray, player);
+            collisionDetection.DetectCollision(enemyObjectList, laserArray, powerupArray, player);
 
             repaint();
         } catch (Exception ex){

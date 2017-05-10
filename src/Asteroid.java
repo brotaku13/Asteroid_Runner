@@ -20,9 +20,9 @@ public abstract class Asteroid extends EnemyObjects {
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.WHITE);
 
     }
+
     public int getPoints(){ return points; }
     public void setPoints(int pointAmount) { this.points = pointAmount; }
 }

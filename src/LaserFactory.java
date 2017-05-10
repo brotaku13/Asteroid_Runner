@@ -18,11 +18,32 @@ public class LaserFactory {
 
 
     public void createLaser() {
+        switch(Main.laserLevel){
+            case(0):
+                if (firing) {
+                    laserShotArrayList.add(new LaserShot(7, 1, 14, 4, player.getX() + player.getShipLength(), player.getY() + player.getShipLength() / 2));
+                }
+                break;
+            case(1):
+                if (firing) {
+                    laserShotArrayList.add(new LaserShot(7, 1, 14, 10, player.getX() + player.getShipLength(), player.getY() + player.getShipLength() / 2));
+                }
+                break;
+            case(2):
+                if (firing) {
+                    laserShotArrayList.add(new LaserShot(14, 1, 4, 4, player.getX() + player.getShipLength(), player.getY() + player.getShipLength() / 2));
+                }
+                break;
+            case(3):
+                if (firing) {
+                    laserShotArrayList.add(new LaserShot(7, 1, 4, 4, player.getX() + player.getShipLength(), player.getY()));
+                    laserShotArrayList.add(new LaserShot(7, 1, 4, 4, player.getX() + player.getShipLength(), player.getY() + player.getShipLength()));
 
-        if (firing) {
-            laserShotArrayList.add(new LaserShot(7, 1, 14, 4, player.getX() + player.getShipLength(), player.getY() + player.getShipLength() / 2));
+                }
+                break;
+
+
         }
-
 
     }
 
