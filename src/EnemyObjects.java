@@ -9,6 +9,7 @@ public abstract class EnemyObjects extends GameObjects {
     protected int length;
     protected int width;
     protected int life;
+    private int points;
 
 
     public EnemyObjects( int newLife){
@@ -26,6 +27,8 @@ public abstract class EnemyObjects extends GameObjects {
     public int getWidth() { return width; }
     public void setLength( int newLength) { length = newLength; }
     public void setWidth(int newWidth) { width = newWidth; }
+    public int getPoints(){ return points; }
+    public void setPoints(int pointAmount) { this.points = pointAmount; }
 
 
 }

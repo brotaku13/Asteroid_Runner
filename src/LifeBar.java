@@ -4,7 +4,7 @@ import java.awt.*;
 /**
  * Created by brian on 5/9/2017.
  */
-public class LifeBar extends JPanel {
+public class LifeBar {
 
     private int width;
     private int height;

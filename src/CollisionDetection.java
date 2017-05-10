@@ -23,11 +23,12 @@ public class CollisionDetection {
                     enemyObjectList.get(i).getX() + enemyObjectList.get(i).getLength() < 0)
             {
                 if(enemyObjectList.get(i).EnemyRectangle().intersects(player.shipRectangle())){
-
                     if(Main.playerLife > 0){
                         Main.playerLife -= 1;
-
                     }
+                }
+                if (enemyObjectList.get(i).life <= 0){
+                    Main.points += enemyObjectList.get(i).getPoints();
                 }
 
                 enemyObjectList.remove(i);

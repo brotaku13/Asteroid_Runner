@@ -16,6 +16,7 @@ public class MediumAsteroid extends Asteroid{
         setLength(rand.nextInt(50) + 20);
         setWidth(rand.nextInt(50) + 20);
         setVelocity(rand.nextInt(10 - 5) + 2);
+        setPoints((getLength() * getWidth()) / 10);
     }
 
     @Override

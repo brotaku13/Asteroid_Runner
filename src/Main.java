@@ -15,6 +15,7 @@ public class Main {
     public static final int UI_HEIGHT = 100;
 
     public static int playerLife = 3;
+    public static int points = 0;
 
 
 

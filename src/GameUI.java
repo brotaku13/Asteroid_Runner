@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class GameUI extends MainFrame {
 
     LifeBar lifeBar = new LifeBar();
+    Points pointShow = new Points();
 
 
 
@@ -17,11 +18,13 @@ public class GameUI extends MainFrame {
         super.paintComponent(g);
         this.setBackground(Color.BLACK);
         lifeBar.draw(g);
+        pointShow.draw(g);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         lifeBar.update();
+        pointShow.update();
         repaint();
     }
 }

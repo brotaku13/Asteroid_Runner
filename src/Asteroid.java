@@ -3,7 +3,7 @@ import java.awt.geom.Area;
 
 
 public abstract class Asteroid extends EnemyObjects {
-
+    private int points;
 
     public Asteroid (int newLife){
         super(newLife);
@@ -23,4 +23,6 @@ public abstract class Asteroid extends EnemyObjects {
         g.setColor(Color.WHITE);
 
     }
+    public int getPoints(){ return points; }
+    public void setPoints(int pointAmount) { this.points = pointAmount; }
 }
