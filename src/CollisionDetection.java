@@ -12,7 +12,7 @@ public class CollisionDetection {
             if (!laserArray.isEmpty()){
                 for (int j = 0; j < laserArray.size(); j++){
                     if(enemyObjectList.get(i).EnemyRectangle().intersects(laserArray.get(j).laserRect())){
-                        System.out.println("collision");
+
                         enemyObjectList.get(i).life -= 1;
                         laserArray.remove(j);
                     }
@@ -22,8 +22,16 @@ public class CollisionDetection {
                     enemyObjectList.get(i).life <= 0 ||
                     enemyObjectList.get(i).getX() + enemyObjectList.get(i).getLength() < 0)
             {
-                System.out.println("object removed");
+                if(enemyObjectList.get(i).EnemyRectangle().intersects(player.shipRectangle())){
+
+                    if(Main.playerLife > 0){
+                        Main.playerLife -= 1;
+
+                    }
+                }
+
                 enemyObjectList.remove(i);
+
             }
 
         }

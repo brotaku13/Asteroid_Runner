@@ -5,8 +5,8 @@ import java.awt.geom.Area;
 public abstract class Asteroid extends EnemyObjects {
 
 
-    public Asteroid (int newVelocity, int newLife){
-        super(newVelocity, newLife);
+    public Asteroid (int newLife){
+        super(newLife);
 
     }
 

@@ -10,6 +10,7 @@ import java.util.Timer;
 public class MainFrame extends JPanel implements ActionListener {
     Player player;
     LaserFactory laserFactory;
+
     //List of enemy objects, all enemy objects inherit from EnemyObject and are contined in this list, which is drawn at every Timer Action
     ArrayList<EnemyObjects> enemyObjectList;
     ArrayList<LaserShot> laserArray;
@@ -57,13 +58,19 @@ public class MainFrame extends JPanel implements ActionListener {
         this method controls how often the asteroids are created
         change the bound to change the creation of asteroids: higher equals slower
          */
-        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(1000 - 100) + 100);
+        timer.schedule(new AsteroidFactory(enemyObjectList), 0, rand.nextInt(500 - 200) + 200);
 
         //mapping SpaceBar
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "SPACE");
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true), "SPACE_RELEASED");
         actionmap.put("SPACE", new KeyBindings(laserFactory, "SPACE"));
         actionmap.put("SPACE_RELEASED", new KeyBindings(laserFactory, "SPACE_RELEASED"));
+
+        //mapping right arrow key
+        inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RIGHTARROW");
+        inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "RIGHTARROW_RELEASED");
+        actionmap.put("RIGHTARROW", new KeyBindings(laserFactory, "RIGHTARROW"));
+        actionmap.put("RIGHTARROW_RELEASED", new KeyBindings(laserFactory, "RIGHTARROW_RELEASED"));
 
         // mapping up
         inputmap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "UP");
@@ -136,4 +143,6 @@ public class MainFrame extends JPanel implements ActionListener {
         }
 
     }
+
+    public Player getPlayer(){ return this.player; }
 }

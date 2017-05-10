@@ -14,41 +14,14 @@ public class Main {
 
     public static final int UI_HEIGHT = 100;
 
+    public static int playerLife = 3;
+
+
 
 
 
     public static void main(String[] args) {
-        /*
-        JFrame gameFrame = new JFrame("Asteroid Runner");
-        gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
-        gameFrame.setBackground(Color.DARK_GRAY);
 
-        Container pane = new Container();
-        pane.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-        pane.setBackground(Color.RED);
-
-
-        MainFrame mainframe = new MainFrame();
-        mainframe.setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
-        mainframe.setBackground(Color.BLACK);
-
-        GameUI gameUI = new GameUI();
-        gameUI.setPreferredSize(new Dimension(GAME_WIDTH, UI_HEIGHT));
-        gameUI.setBackground(Color.BLACK);
-
-        pane.add(gameUI);
-
-        pane.add(Box.createRigidArea(new Dimension(WINDOW_WIDTH, 20)));
-        pane.add(mainframe);
-        pane.add(Box.createRigidArea(new Dimension(WINDOW_WIDTH, 20)));
-
-
-        gameFrame.add(pane);
-        gameFrame.pack();
-        gameFrame.setVisible(true);
-        mainframe.gameManager();
-        */
         JFrame gameFrame = new JFrame("Asteroid Runner");
         gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
         gameFrame.setBackground(Color.DARK_GRAY);
@@ -89,9 +62,8 @@ public class Main {
         gameFrame.add(pane);
         gameFrame.pack();
         gameFrame.setVisible(true);
+
         mainframe.gameManager();
-
-
 
     }
 }

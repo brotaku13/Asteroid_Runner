@@ -10,12 +10,14 @@ public class LargeAsteroid extends Asteroid{
 
     public LargeAsteroid(int height) {
 
-        super(2, 10);
+        super(7);
 
         setX(Main.GAME_WIDTH);
         setY(height);
         setLength(rand.nextInt(120) + 50);
         setWidth(rand.nextInt(120) + 50);
+        setVelocity(rand.nextInt(5 - 2) + 2);
+
     }
 
     @Override

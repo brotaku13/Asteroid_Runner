@@ -7,11 +7,13 @@ public class Player extends GameObjects {
     private int shipSize = 40;
     private int fireRate = 200;
     private boolean up, down, left, right;
+    private int life;
 
     public Player (){
         setX(Main.GAME_WIDTH / 2);
         setY(Main.GAME_HEIGHT / 2);
         speed = 5;
+        life = 3;
     }
 
 
@@ -85,5 +87,8 @@ public class Player extends GameObjects {
     public void setShipLength( int newShipLength) { this.shipSize = newShipLength; }
     public int getShipHeight() { return shipSize;}
     public int getFireRate() { return fireRate; }
+    public int getLife() { return life;}
+    public void setLife(int newLife) { life = newLife; }
+    
 
 }

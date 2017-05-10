@@ -10,11 +10,12 @@ public class MediumAsteroid extends Asteroid{
 
     public MediumAsteroid(int height) {
 
-        super(5, 5);
+        super(3);
         setX(Main.GAME_WIDTH);
         setY(height);
         setLength(rand.nextInt(50) + 20);
         setWidth(rand.nextInt(50) + 20);
+        setVelocity(rand.nextInt(10 - 5) + 2);
     }
 
     @Override
